@@ -1,39 +1,37 @@
+import 'package:efamery_application/pages/home_screen.dart';
+import 'package:efamery_application/pages/profile_screen.dart';
 import 'package:flutter/material.dart';
 
-class MainScreen extends StatelessWidget {
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  final int _index = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('eFarmery'),
-      ),
-      body: Center(
-        child: Text(
-          'Welcome to eFarmery!',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-      bottomNavigationBar: BottomAppBar(
-        child: Container(
-          height: 56,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              IconButton(
-                icon: Icon(Icons.home),
-                onPressed: () {
-                  // Navigate to the home screen
-                },
+      body: const HomeScreen(),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _index,
+        onTap: (index) {
+          if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProfileScreen(),
               ),
-              IconButton(
-                icon: Icon(Icons.account_circle),
-                onPressed: () {
-                  // Navigate to the profile screen
-                },
-              ),
-            ],
-          ),
-        ),
+            );
+          }
+        },
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: 'Profile'),
+        ],
       ),
     );
   }
