@@ -1,4 +1,4 @@
-import 'package:efamery_application/pages/main_screen.dart';
+import 'package:efamery_application/pages/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MainScreen(),
+      home: const SplashScreen(),
     );
   }
 }
